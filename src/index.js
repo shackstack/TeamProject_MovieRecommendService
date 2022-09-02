@@ -2,8 +2,8 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import "./index.css";
-import { Provider } from "react";
 import store from "./store/config/configStore";
+import { Provider } from "react";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
