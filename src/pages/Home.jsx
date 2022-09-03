@@ -1,5 +1,4 @@
 import React from "react";
-import MoviePosting from "../components/posting/MoviePosting";
 
 const Home = () => {
   return (

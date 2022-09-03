@@ -4,12 +4,13 @@ import reportWebVitals from "./reportWebVitals";
 import "./index.css";
 import store from "./store/config/configStore";
 import { Provider } from "react";
+import "bootstrap/dist/css/bootstrap.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   // <Provider store={store}>
   //   <App />
-  // </Provider>
+  // </Provider>  잠깐 주석처리해놓을게요 화면이 안보여서
   <App></App>
 );
 

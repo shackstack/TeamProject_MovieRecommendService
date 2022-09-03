@@ -1,8 +1,7 @@
 import { BrowserRouter, Route, Routes, Link } from "react-router-dom";
 import Home from "../pages/Home";
 import Login from "../pages/Login";
-import MoviePosting from "../components/posting/MoviePosting";
-
+import MoviePosting from "../pages/MoviePosting";
 const Router = () => {
   return (
     <BrowserRouter>
