@@ -9,7 +9,7 @@ export const movieListing = () => {
 const initialState = {
   movieNumber: 0,
   title: "",
-  url: "",
+  image_url: "",
   content: "",
   isAlive: true,
 };
@@ -21,7 +21,7 @@ const movieCreater = (state = initialState, action) => {
         ...state,
         movieNumber: state.movieNumber + 1,
         title: action.payload.title,
-        url: action.payload.url,
+        image_url: action.payload.url,
         content: action.payload.content,
       };
 
