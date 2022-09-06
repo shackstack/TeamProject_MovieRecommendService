@@ -3,22 +3,21 @@ import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
-import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { movieListing } from "src/store/reducers/moviecreater";
+import { useState } from "react";
+import postMovie from "src/apis/axios/moviepost";
 
 const MoviePosting = () => {
-  const dispatch = useDispatch();
-  const [title, setTitle] = useState("");
-  const [url, setUrl] = useState("");
+  const [title, setTitle] = useState("Top Gun");
+  const [image_url, setUrl] = useState("");
   const [content, setContent] = useState("");
   const [star, setStar] = useState("");
 
   const submitForm = () => {
-    dispatch(movieListing({ title, url, content, star }));
+    if (title === "" || image_url === "" || content === "" || star === "") {
+      return alert("다시하세요");
+    }
+    postMovie({ title, image_url, content, star });
   };
-
-  useEffect(() => {});
 
   return (
     <>
@@ -30,6 +29,7 @@ const MoviePosting = () => {
             placeholder="Which movie you'd like to recommend?"
             onChange={(e) => {
               setTitle(e.target.value);
+              console.log(title);
             }}
           />
         </Form.Group>
@@ -62,9 +62,7 @@ const MoviePosting = () => {
           onChange={(e) => {
             setStar(e.target.value);
           }}>
-          <option value="" selected>
-            How much do you want to recommend?
-          </option>
+          <option defaultValue="">How much do you want to recommend?</option>
           <option value="⭐">⭐</option>
           <option value="⭐⭐">⭐⭐</option>
           <option value="⭐⭐⭐">⭐⭐⭐</option>
@@ -72,11 +70,10 @@ const MoviePosting = () => {
           <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
         </select>
         <Jump>
-          <Link to="/browse">
-            <Button variant="light" type="submit" onClick={() => submitForm()}>
-              Submit
-            </Button>
-          </Link>
+          <Button variant="light" type="submit" onClick={() => submitForm()}>
+            Submit
+          </Button>
+
           <Link to="/browse">
             <Button variant="light" type="cancel">
               Cancel
