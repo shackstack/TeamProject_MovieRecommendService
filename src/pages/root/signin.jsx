@@ -2,6 +2,8 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 function SignIn() {
   const ListContainer = styled.form`
     width: 100%;
@@ -33,8 +35,13 @@ function SignIn() {
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       <Button variant="light" type="submit">
-        Submit
+        Log-in
       </Button>
+      <Link to="/login/signup">
+        <Button variant="light" type="submit">
+          Sign-up
+        </Button>
+      </Link>
     </ListContainer>
   );
 }

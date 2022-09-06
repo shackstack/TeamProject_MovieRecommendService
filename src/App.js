@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Welcome from "src/pages/root/welcome";
-import MoviePosting from "./pages/root/movieposting";
 import BrowseRoutes from "src/pages/browse/routes";
 import SignIn from "./pages/root/signin";
 import SignUp from "./pages/root/signup";
@@ -30,10 +29,9 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Welcome />}></Route>
-            <Route path="/signin" element={<SignIn />}></Route>
-            <Route path="/signup" element={<SignUp />}></Route>
+            <Route path="/login/*" element={<SignIn />}></Route>
+            <Route path="/login/signup" element={<SignUp />}></Route>
             <Route path="/browse/*" element={<BrowseRoutes />}></Route>
-            <Route path="/browse/create" element={<MoviePosting />}></Route>
           </Routes>
         </BrowserRouter>
       </Provider>

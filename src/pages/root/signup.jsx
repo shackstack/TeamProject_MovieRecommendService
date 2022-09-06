@@ -3,6 +3,8 @@ import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 
+import { Link } from "react-router-dom";
+
 function SignUp() {
   const ListContainer = styled.form`
     width: 100%;
@@ -59,9 +61,11 @@ function SignUp() {
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
         <Submitbtn>
-          <Button variant="light" type="submit">
-            Submit
-          </Button>
+          <Link to="/login">
+            <Button variant="light" type="submit">
+              Submit
+            </Button>
+          </Link>
         </Submitbtn>
       </ListContainer>
     </>
