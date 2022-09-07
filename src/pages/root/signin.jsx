@@ -3,15 +3,17 @@ import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { REST_API } from "src/apis/config";
+import postLogIn from "src/apis/axios/login/login";
 
 function SignIn() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const onClickLogIn = async () => {
-    console.log(username, password);
-    await REST_API.post({ username, password });
+  const onClickLogIn = () => {
+    postLogIn({
+      username: username,
+      password: password,
+    });
   };
 
   return (
@@ -41,7 +43,6 @@ function SignIn() {
 
       <Button
         variant="light"
-        type="submit"
         onClick={() => {
           onClickLogIn();
         }}>

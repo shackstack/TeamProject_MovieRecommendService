@@ -4,7 +4,8 @@ import Form from "react-bootstrap/Form";
 import styled from "styled-components";
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { REST_API } from "src/apis/config";
+import postSignUp from "src/apis/axios/signup/signup";
+import idCheck from "src/apis/axios/signup/idcheck";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -12,9 +13,19 @@ const SignUp = () => {
   const [pwdCheck, setPwdCheck] = useState("");
   const [nickname, setNickname] = useState("");
 
-  const onClickSignUp = async () => {
-    await REST_API.post({ username, password, pwdCheck, nickname });
-    console.log(username, password, pwdCheck, nickname);
+  const onClickSignUp = () => {
+    postSignUp({
+      username: username,
+      password: password,
+      pwdCheck: pwdCheck,
+      nickname: nickname,
+    });
+  };
+
+  const onClickIDCheck = () => {
+    idCheck({
+      username: username,
+    });
   };
 
   return (
@@ -32,7 +43,12 @@ const SignUp = () => {
                 setUsername(e.target.value);
               }}
             />
-            <Button variant="outline-light" id="button-addon2">
+            <Button
+              variant="outline-light"
+              id="button-addon2"
+              onClick={() => {
+                onClickIDCheck();
+              }}>
               중복검사
             </Button>
           </InputGroup>
@@ -73,7 +89,6 @@ const SignUp = () => {
           <Link to="/login">
             <Button
               variant="light"
-              type="submit"
               onClick={() => {
                 onClickSignUp();
               }}>
