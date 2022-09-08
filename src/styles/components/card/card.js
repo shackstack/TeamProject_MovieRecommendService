@@ -5,10 +5,9 @@ export const StyCard = styled.div`
     display: flex;
     flex-direction: column;
     background-color: ${({ theme }) => theme?.color?.background || "lightgray"};
-    width: 22%;
+    width: 20%;
     max-width: ${window.innerWidth / 4};
     height: 32vw;
-    margin: 2rem 1.5%;
     transition: 250ms transform;
     user-select: none;
     &:hover {

@@ -1,48 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import ListCard from "../card/listCard";
+import { getList } from "src/apis/axios/post";
 
 const ListContainer = styled.div`
     width: 100%;
     height: 100%;
-    max-width: ${window.innerWidth}px;
     min-height: ${window.innerHeight}px;
     background-color: ${({ theme }) => theme.color.background};
     padding: 6rem 3rem;
+    gap: 8rem calc(100% * 0.2 / 3);
     display: flex;
     flex-wrap: wrap;
 `;
 const List = () => {
-    const tempData = [
-        {
-            id: 1,
-            title: "테스트",
-        },
-        {
-            id: 2,
-            title: "테스트",
-        },
-        {
-            id: 3,
-            title: "테스트",
-        },
-        {
-            id: 4,
-            title: "테스트",
-        },
-        {
-            id: 5,
-            title: "테스트",
-        },
-        {
-            id: 6,
-            title: "테스트",
-        },
-    ];
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        getList()
+            .then((res) => {
+                console.log(res.data);
+                setData(res.data?.data);
+            })
+            .catch((err) => {
+                console.log(err.toJSON());
+            });
+    }, []);
+
     return (
         <ListContainer>
-            {tempData?.map((el) => (
-                <ListCard element={el}></ListCard>
+            {data?.map((el) => (
+                <ListCard key={el?.id} element={el}></ListCard>
             ))}
         </ListContainer>
     );
